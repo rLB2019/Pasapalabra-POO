@@ -38,7 +38,11 @@ public class Jugador {
     public Jugador(String n, String c){
         this.nombre = n;
         this.clave = c;
-        //Arraylist
+        this.partidas = new ArrayList<Partida>;
+        this.partidas_jugadas = 0;
+        this.partidas_ganadas = 0;
+        this.partidas_empatadas = 0;
+        this.partidas_perdidas = 0;
     }
     
     public String getNombre(){
