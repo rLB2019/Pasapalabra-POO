@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author MrKanoa
+ * @author Rodrigo
  */
 public class AlmacenPalabras {
 
