@@ -1,20 +1,23 @@
 package Palabra;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import Jugador.*;
 
 /**
  *
  * @author alvaro
  */
-public class Palabra {
+public class Palabra implements Serializable {
+
     private final char inicial;
     private final String palabra;
     private boolean acertada;
     private boolean fallada;
     private boolean aplazada;
     private ArrayList<Definicion> definiciones;
-    
-    public Palabra(char i, String p, boolean acertada, boolean f, boolean aplazada, Definicion definicion){
+
+    public Palabra(char i, String p, boolean acertada, boolean f, boolean aplazada, Definicion definicion) {
         this.inicial = i;
         this.palabra = p;
         this.acertada = acertada;
@@ -22,28 +25,28 @@ public class Palabra {
         this.aplazada = aplazada;
         definiciones.add(definicion);
     }
-    
-    public String getPalabra(){
+
+    public String getPalabra() {
         return palabra;
     }
-    
-    public char getLetra(){
+
+    public char getLetra() {
         return inicial;
     }
-    
-    public int getEstado(){
+
+    public int getEstado() {
         //Devolvemos si la letra esta acertada = 1, fallada = -1; o aplazada = 0;
-        if(acertada){
+        if (acertada) {
             return 1;
-        }else if(fallada){
+        } else if (fallada) {
             return -1;
-        }else{
+        } else {
             return 0;
         }
     }
-    
-    public void setEstado(int i){
-        switch(i){
+
+    public void setEstado(int i) {
+        switch (i) {
             case 1:
                 acertada = true;
                 fallada = false;
@@ -55,17 +58,33 @@ public class Palabra {
                 fallada = false;
         }
     }
-    
-    public void agregarDef(Definicion d){
+
+    public void agregarDef(Definicion d) {
         definiciones.add(d);
     }
-    
-    public void borrarDef(Definicion d){
+
+    public void borrarDef(Definicion d) {
         definiciones.remove(d);
     }
-    
-    public void cambiarDef(String d){
-         definiciones.clear();
-         definiciones.add(d);
+
+    public void cambiarDef(Definicion d) {
+        definiciones.clear();
+        definiciones.add(d);
+    }
+
+    public Definicion getDefinicion(int i) {
+        if (i < definiciones.size() && i > 0) {
+            return definiciones.get(i);
+        }
+        return null;
+    }
+
+    public void PedirAyuda(int tipo, Jugador j) {
+        if (tipo == 1) {
+            //Mostrar segunda definicion
+        } else if (tipo == 0) {
+            //Mostrar letras
+        }
+        j.restarPuntos(5);
     }
 }

@@ -4,13 +4,21 @@
  */
 package Palabra;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author Rodrigo
+ * @author MrKanoa
  */
-public class AlmacenPalabras {
+public class AlmacenPalabras implements Serializable {
 
     private ArrayList<Palabra> palabrasA;
     private ArrayList<Palabra> palabrasB;
@@ -36,13 +44,53 @@ public class AlmacenPalabras {
     private ArrayList<Palabra> palabrasX;
     private ArrayList<Palabra> palabrasY;
     private ArrayList<Palabra> palabrasZ;
+    private static String fichero;
 
-    private CargarFichero() {
-        //Al crear el objeto cargamos las palabras automaticamente
+    private void CargarFichero() {
+        try {
+            //Al crear el objeto cargamos las palabras automaticamente
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero));
+            AlmacenPalabras aux = (AlmacenPalabras) ois.readObject();
+            //Copiamos las palabras al objeto
+            this.palabrasA = aux.getPalabras('a');
+            this.palabrasB = aux.getPalabras('b');
+            this.palabrasC = aux.getPalabras('c');
+            this.palabrasD = aux.getPalabras('d');
+            this.palabrasE = aux.getPalabras('e');
+            this.palabrasF = aux.getPalabras('f');
+            this.palabrasG = aux.getPalabras('g');
+            this.palabrasH = aux.getPalabras('h');
+            this.palabrasI = aux.getPalabras('i');
+            this.palabrasJ = aux.getPalabras('j');
+            this.palabrasL = aux.getPalabras('l');
+            this.palabrasM = aux.getPalabras('m');
+            this.palabrasN = aux.getPalabras('n');
+            this.palabrasO = aux.getPalabras('o');
+            this.palabrasP = aux.getPalabras('p');
+            this.palabrasQ = aux.getPalabras('q');
+            this.palabrasR = aux.getPalabras('r');
+            this.palabrasS = aux.getPalabras('s');
+            this.palabrasT = aux.getPalabras('t');
+            this.palabrasU = aux.getPalabras('u');
+            this.palabrasV = aux.getPalabras('v');
+            this.palabrasX = aux.getPalabras('x');
+            this.palabrasY = aux.getPalabras('y');
+            this.palabrasZ = aux.getPalabras('z');
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(AlmacenPalabras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    private GuardarFichero() {
+    private void GuardarFichero() {
         //Guardamos el fichero despues de añadir una palabra nueva
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
+            oos.writeObject(this);
+            oos.reset();
+            oos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(AlmacenPalabras.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void addPalabra(Palabra p) {
@@ -101,6 +149,63 @@ public class AlmacenPalabras {
         GuardarFichero();
     }
 
+    public ArrayList<Palabra> getPalabras(char letra) {
+        ArrayList<Palabra> resultado = new ArrayList<>();
+        switch (letra) {
+            case 'a' ->
+                resultado = (ArrayList<Palabra>) palabrasA.clone();
+            case 'b' ->
+                resultado = (ArrayList<Palabra>) palabrasB.clone();
+            case 'c' ->
+                resultado = (ArrayList<Palabra>) palabrasC.clone();
+            case 'd' ->
+                resultado = (ArrayList<Palabra>) palabrasD.clone();
+            case 'e' ->
+                resultado = (ArrayList<Palabra>) palabrasE.clone();
+            case 'f' ->
+                resultado = (ArrayList<Palabra>) palabrasF.clone();
+            case 'g' ->
+                resultado = (ArrayList<Palabra>) palabrasG.clone();
+            case 'h' ->
+                resultado = (ArrayList<Palabra>) palabrasH.clone();
+            case 'i' ->
+                resultado = (ArrayList<Palabra>) palabrasI.clone();
+            case 'j' ->
+                resultado = (ArrayList<Palabra>) palabrasJ.clone();
+            case 'l' ->
+                resultado = (ArrayList<Palabra>) palabrasL.clone();
+            case 'm' ->
+                resultado = (ArrayList<Palabra>) palabrasM.clone();
+            case 'n' ->
+                resultado = (ArrayList<Palabra>) palabrasN.clone();
+            case 'o' ->
+                resultado = (ArrayList<Palabra>) palabrasO.clone();
+            case 'p' ->
+                resultado = (ArrayList<Palabra>) palabrasP.clone();
+            case 'q' ->
+                resultado = (ArrayList<Palabra>) palabrasQ.clone();
+            case 'r' ->
+                resultado = (ArrayList<Palabra>) palabrasR.clone();
+            case 's' ->
+                resultado = (ArrayList<Palabra>) palabrasS.clone();
+            case 't' ->
+                resultado = (ArrayList<Palabra>) palabrasT.clone();
+            case 'u' ->
+                resultado = (ArrayList<Palabra>) palabrasU.clone();
+            case 'v' ->
+                resultado = (ArrayList<Palabra>) palabrasV.clone();
+            case 'x' ->
+                resultado = (ArrayList<Palabra>) palabrasX.clone();
+            case 'y' ->
+                resultado = (ArrayList<Palabra>) palabrasY.clone();
+            case 'z' ->
+                resultado = (ArrayList<Palabra>) palabrasZ.clone();
+            default -> {
+            }
+        }
+        return resultado;
+    }
+
     public void BorrarPalabra(Palabra p) {
         switch (p.getLetra()) {
             case 'a' ->
@@ -156,7 +261,34 @@ public class AlmacenPalabras {
         }
     }
 
-    public AlmacenPalabras() {
-        CargarFichero();
+    public AlmacenPalabras(boolean inicial) {
+        if (!inicial) {
+            CargarFichero();
+        } else {
+            this.palabrasA = new ArrayList<>();
+            this.palabrasB = new ArrayList<>();
+            this.palabrasC = new ArrayList<>();
+            this.palabrasD = new ArrayList<>();
+            this.palabrasE = new ArrayList<>();
+            this.palabrasF = new ArrayList<>();
+            this.palabrasG = new ArrayList<>();
+            this.palabrasH = new ArrayList<>();
+            this.palabrasI = new ArrayList<>();
+            this.palabrasJ = new ArrayList<>();
+            this.palabrasL = new ArrayList<>();
+            this.palabrasM = new ArrayList<>();
+            this.palabrasN = new ArrayList<>();
+            this.palabrasO = new ArrayList<>();
+            this.palabrasP = new ArrayList<>();
+            this.palabrasQ = new ArrayList<>();
+            this.palabrasR = new ArrayList<>();
+            this.palabrasS = new ArrayList<>();
+            this.palabrasT = new ArrayList<>();
+            this.palabrasU = new ArrayList<>();
+            this.palabrasV = new ArrayList<>();
+            this.palabrasX = new ArrayList<>();
+            this.palabrasY = new ArrayList<>();
+            this.palabrasZ = new ArrayList<>();
+        }
     }
 }
