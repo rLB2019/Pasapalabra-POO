@@ -79,11 +79,11 @@ public class Palabra implements Serializable {
         return null;
     }
 
-    public void PedirAyuda(int tipo, Jugador j) {
+    public String PedirAyuda(int tipo, Jugador j) {
         if (tipo == 1) {
-            //Mostrar segunda definicion
+            return definiciones.get(1);
         } else if (tipo == 0) {
-            //Mostrar letras
+            //Hay que crear un metodo para crear la pista
         }
         j.restarPuntos(5);
     }
