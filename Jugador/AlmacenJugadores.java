@@ -43,11 +43,12 @@ public class AlmacenJugadores implements Serializable {
         while (!encontrado && it.hasNext()) {
             Jugador usuario = it.next();
             encontrado = usuario.getNombre().equalsIgnoreCase(nombre);
+        }
         return encontrado;
     }
     
         
-    //Este metodo da illegal start of expression
+    
     public Jugador getJugador(String nombre, String clave){
         
         Jugador jugador = null;

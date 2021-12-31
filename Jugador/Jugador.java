@@ -7,12 +7,13 @@ package Jugador;
 
 import java.util.ArrayList;
 import Juego.*;
+import java.io.Serializable;
 
 /**
  *
  * @author alvaro
  */
-public class Jugador {
+public class Jugador implements Comparable<Jugador>, Serializable {
 
     private static final String NOMBRE_ADMIN = "admin";
     private static final String CLAVE_ADMIN = "admin";
@@ -133,14 +134,24 @@ public class Jugador {
         this.puntos -= p;
     }
 
-    public String Estadisticas() {
+    public String estadisticas() {
         String resultado = "";
         resultado += "Partidas Jugadas: " + this.partidas_jugadas + "\n";
-        resultado += "Partidas ganadas: " + this.partidas_ganadas + "\n";
+        resultado += "Partidas Ganadas: " + this.partidas_ganadas + "\n";
         resultado += "Partidas Empatadas: " + this.partidas_empatadas + "\n";
         resultado += "Partidas Perdidas: " + this.partidas_perdidas + "\n";
         resultado += "Puntos: " + this.puntos + "\n";
         return resultado;
+    }
+    
+    @Override
+    public int compareTo(Jugador otroJugador) {
+        if (this.partidas_ganadas < otroJugador.partidas_ganadas) {
+            return -1;
+        } else if (this.partidas_ganadas > otroJugador.partidas_ganadas) {
+            return 1;
+        }
+        return 0;
     }
 
     public void mostrarHistorial() {

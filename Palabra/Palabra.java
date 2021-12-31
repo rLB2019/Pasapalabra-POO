@@ -3,6 +3,7 @@ package Palabra;
 import java.io.Serializable;
 import java.util.ArrayList;
 import Jugador.*;
+import static java.lang.Math.random;
 
 /**
  *
@@ -15,8 +16,6 @@ public class Palabra implements Serializable {
     private boolean acertada;
     private boolean fallada;
     private boolean aplazada;
-    private boolean pistaDefinicion;
-    private boolean pistaLetras;
     private ArrayList<Definicion> definiciones;
 
     public Palabra(char i, String p, boolean acertada, boolean f, boolean aplazada, Definicion definicion) {
@@ -25,9 +24,7 @@ public class Palabra implements Serializable {
         this.acertada = acertada;
         this.fallada = f;
         this.aplazada = aplazada;
-        this.definiciones.add(definicion);
-        this.pistaDefinicion = false;
-        this.pistaLetras = false;
+        definiciones.add(definicion);
     }
 
     public String getPalabra() {
@@ -82,25 +79,30 @@ public class Palabra implements Serializable {
         }
         return null;
     }
-    
-    public int hayPista(){
-        if(pistaDefiniciones && pistaLetras) return 2;
-        if(pistaDefiniciones || pistaLetras) return 1;
 
     public String pedirAyuda(int tipo, Jugador j) {
-        if (tipo == 1) {//Damos la definicion 2
-            pistaDefinicion = true;
-            return definiciones.get(1).getDefinicion();
-        } else if (tipo == 0) {//Damos letras desordenadas de la palabra
-            //Hay que crear un metodo para crear la pista
-            pistaLetras = true;
-            //return X; //Devolvemos las letras en String
+        String pista = new String();
+        if (tipo == 1) {
+            //Mostrar segunda definicion
+            pista.concat("Otra Definicion: ");
+            pista.concat(getDefinicion(1).getDefinicion());
+        } else if (tipo == 0) {
+            //Mostrar letras
+            pista.concat("La palabra contiene: ");
+            int size = palabra.length();
+            size = size / 3;
+            for(int i = 0; i < size; i++){
+                pista = pista + palabra.charAt((int) (random() * palabra.length()));
+                pista.concat("\t");
+            }
         }
         j.restarPuntos(5);
+        return pista;
     }
     
-    public String comprarPalabra(Jugador j){
-        j.restarPuntos(10);
-        return palabra;
-    }    
+    public String comprarPalabra (Jugador j){
+        String solucion = "La palabra es: " + this.palabra;
+        j.restarPuntos(20);
+        return solucion;
+    }
 }

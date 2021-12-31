@@ -20,6 +20,8 @@ import java.util.logging.Logger;
  */
 public class AlmacenPalabras implements Serializable {
 
+    private static String fichero;
+    
     private ArrayList<Palabra> palabrasA;
     private ArrayList<Palabra> palabrasB;
     private ArrayList<Palabra> palabrasC;
@@ -44,7 +46,7 @@ public class AlmacenPalabras implements Serializable {
     private ArrayList<Palabra> palabrasX;
     private ArrayList<Palabra> palabrasY;
     private ArrayList<Palabra> palabrasZ;
-    private static String fichero;
+    
 
     private void CargarFichero() {
         try {
