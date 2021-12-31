@@ -41,9 +41,10 @@ public class Palabra implements Serializable {
             return 1;
         } else if (fallada) {
             return -1;
-        } else {
+        } else if (aplazada) {
             return 0;
         }
+        return 0;
     }
 
     public void setEstado(int i) {
@@ -57,6 +58,7 @@ public class Palabra implements Serializable {
             default:
                 acertada = false;
                 fallada = false;
+                aplazada = true;
         }
     }
 
@@ -80,29 +82,39 @@ public class Palabra implements Serializable {
         return null;
     }
 
-    public String pedirAyuda(int tipo, Jugador j) {
+    public String pedirAyuda(Jugador j) {
         String pista = new String();
-        if (tipo == 1) {
+        if (definiciones.size() >= 1) {
             //Mostrar segunda definicion
-            pista.concat("Otra Definicion: ");
-            pista.concat(getDefinicion(1).getDefinicion());
-        } else if (tipo == 0) {
+            pista = pista.concat("Otra Definicion: ");
+            pista = pista.concat(getDefinicion(1).getDefinicion());
+        } else {
             //Mostrar letras
-            pista.concat("La palabra contiene: ");
+            pista = pista.concat("La palabra contiene: ");
             int size = palabra.length();
             size = size / 3;
-            for(int i = 0; i < size; i++){
+            for (int i = 0; i < size; i++) {
                 pista = pista + palabra.charAt((int) (random() * palabra.length()));
-                pista.concat("\t");
+                pista = pista.concat("\t");
             }
         }
         j.restarPuntos(5);
         return pista;
     }
-    
-    public String comprarPalabra (Jugador j){
+
+    public String comprarPalabra(Jugador j) {
         String solucion = "La palabra es: " + this.palabra;
         j.restarPuntos(20);
         return solucion;
+    }
+
+    public boolean comparaPalabra(String p) {
+        if (this.palabra.equals(p)) {
+            setEstado(1);
+            return true;
+        } else {
+            setEstado(-1);
+            return false;
+        }
     }
 }
