@@ -4,15 +4,8 @@
  */
 package Palabra;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -20,78 +13,56 @@ import java.util.logging.Logger;
  */
 public class AlmacenPalabras implements Serializable {
 
-    private static String fichero;
+    private final ArrayList<Palabra> palabrasA;
+    private final ArrayList<Palabra> palabrasB;
+    private final ArrayList<Palabra> palabrasC;
+    private final ArrayList<Palabra> palabrasD;
+    private final ArrayList<Palabra> palabrasE;
+    private final ArrayList<Palabra> palabrasF;
+    private final ArrayList<Palabra> palabrasG;
+    private final ArrayList<Palabra> palabrasH;
+    private final ArrayList<Palabra> palabrasI;
+    private final ArrayList<Palabra> palabrasJ;
+    private final ArrayList<Palabra> palabrasL;
+    private final ArrayList<Palabra> palabrasM;
+    private final ArrayList<Palabra> palabrasN;
+    private final ArrayList<Palabra> palabrasO;
+    private final ArrayList<Palabra> palabrasP;
+    private final ArrayList<Palabra> palabrasQ;
+    private final ArrayList<Palabra> palabrasR;
+    private final ArrayList<Palabra> palabrasS;
+    private final ArrayList<Palabra> palabrasT;
+    private final ArrayList<Palabra> palabrasU;
+    private final ArrayList<Palabra> palabrasV;
+    private final ArrayList<Palabra> palabrasX;
+    private final ArrayList<Palabra> palabrasY;
+    private final ArrayList<Palabra> palabrasZ;
 
-    private ArrayList<Palabra> palabrasA;
-    private ArrayList<Palabra> palabrasB;
-    private ArrayList<Palabra> palabrasC;
-    private ArrayList<Palabra> palabrasD;
-    private ArrayList<Palabra> palabrasE;
-    private ArrayList<Palabra> palabrasF;
-    private ArrayList<Palabra> palabrasG;
-    private ArrayList<Palabra> palabrasH;
-    private ArrayList<Palabra> palabrasI;
-    private ArrayList<Palabra> palabrasJ;
-    private ArrayList<Palabra> palabrasL;
-    private ArrayList<Palabra> palabrasM;
-    private ArrayList<Palabra> palabrasN;
-    private ArrayList<Palabra> palabrasO;
-    private ArrayList<Palabra> palabrasP;
-    private ArrayList<Palabra> palabrasQ;
-    private ArrayList<Palabra> palabrasR;
-    private ArrayList<Palabra> palabrasS;
-    private ArrayList<Palabra> palabrasT;
-    private ArrayList<Palabra> palabrasU;
-    private ArrayList<Palabra> palabrasV;
-    private ArrayList<Palabra> palabrasX;
-    private ArrayList<Palabra> palabrasY;
-    private ArrayList<Palabra> palabrasZ;
-
-    private void CargarFichero() {
-        try {
-            //Al crear el objeto cargamos las palabras automaticamente
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero));
-            AlmacenPalabras aux = (AlmacenPalabras) ois.readObject();
-            //Copiamos las palabras al objeto
-            this.palabrasA = aux.getPalabras('a');
-            this.palabrasB = aux.getPalabras('b');
-            this.palabrasC = aux.getPalabras('c');
-            this.palabrasD = aux.getPalabras('d');
-            this.palabrasE = aux.getPalabras('e');
-            this.palabrasF = aux.getPalabras('f');
-            this.palabrasG = aux.getPalabras('g');
-            this.palabrasH = aux.getPalabras('h');
-            this.palabrasI = aux.getPalabras('i');
-            this.palabrasJ = aux.getPalabras('j');
-            this.palabrasL = aux.getPalabras('l');
-            this.palabrasM = aux.getPalabras('m');
-            this.palabrasN = aux.getPalabras('n');
-            this.palabrasO = aux.getPalabras('o');
-            this.palabrasP = aux.getPalabras('p');
-            this.palabrasQ = aux.getPalabras('q');
-            this.palabrasR = aux.getPalabras('r');
-            this.palabrasS = aux.getPalabras('s');
-            this.palabrasT = aux.getPalabras('t');
-            this.palabrasU = aux.getPalabras('u');
-            this.palabrasV = aux.getPalabras('v');
-            this.palabrasX = aux.getPalabras('x');
-            this.palabrasY = aux.getPalabras('y');
-            this.palabrasZ = aux.getPalabras('z');
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(AlmacenPalabras.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void GuardarFichero() {
-        //Guardamos el fichero despues de añadir una palabra nueva
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
-            oos.writeObject(this);
-            oos.reset();
-            oos.close();
-        } catch (IOException ex) {
-            Logger.getLogger(AlmacenPalabras.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    AlmacenPalabras() {
+        palabrasA = new ArrayList<>();
+        palabrasB = new ArrayList<>();
+        palabrasC = new ArrayList<>();
+        palabrasD = new ArrayList<>();
+        palabrasE = new ArrayList<>();
+        palabrasF = new ArrayList<>();
+        palabrasG = new ArrayList<>();
+        palabrasH = new ArrayList<>();
+        palabrasI = new ArrayList<>();
+        palabrasJ = new ArrayList<>();
+        palabrasL = new ArrayList<>();
+        palabrasM = new ArrayList<>();
+        palabrasN = new ArrayList<>();
+        palabrasO = new ArrayList<>();
+        palabrasP = new ArrayList<>();
+        palabrasQ = new ArrayList<>();
+        palabrasR = new ArrayList<>();
+        palabrasS = new ArrayList<>();
+        palabrasT = new ArrayList<>();
+        palabrasU = new ArrayList<>();
+        palabrasV = new ArrayList<>();
+        palabrasX = new ArrayList<>();
+        palabrasY = new ArrayList<>();
+        palabrasZ = new ArrayList<>();
     }
 
     public void addPalabra(Palabra p) {
@@ -147,7 +118,6 @@ public class AlmacenPalabras implements Serializable {
             default -> {
             }
         }
-        GuardarFichero();
     }
 
     public ArrayList<Palabra> getPalabras(char letra) {
@@ -259,37 +229,6 @@ public class AlmacenPalabras implements Serializable {
                 palabrasZ.remove(p);
             default -> {
             }
-        }
-    }
-
-    public AlmacenPalabras(boolean inicial) {
-        if (!inicial) {
-            CargarFichero();
-        } else {
-            this.palabrasA = new ArrayList<>();
-            this.palabrasB = new ArrayList<>();
-            this.palabrasC = new ArrayList<>();
-            this.palabrasD = new ArrayList<>();
-            this.palabrasE = new ArrayList<>();
-            this.palabrasF = new ArrayList<>();
-            this.palabrasG = new ArrayList<>();
-            this.palabrasH = new ArrayList<>();
-            this.palabrasI = new ArrayList<>();
-            this.palabrasJ = new ArrayList<>();
-            this.palabrasL = new ArrayList<>();
-            this.palabrasM = new ArrayList<>();
-            this.palabrasN = new ArrayList<>();
-            this.palabrasO = new ArrayList<>();
-            this.palabrasP = new ArrayList<>();
-            this.palabrasQ = new ArrayList<>();
-            this.palabrasR = new ArrayList<>();
-            this.palabrasS = new ArrayList<>();
-            this.palabrasT = new ArrayList<>();
-            this.palabrasU = new ArrayList<>();
-            this.palabrasV = new ArrayList<>();
-            this.palabrasX = new ArrayList<>();
-            this.palabrasY = new ArrayList<>();
-            this.palabrasZ = new ArrayList<>();
         }
     }
 }

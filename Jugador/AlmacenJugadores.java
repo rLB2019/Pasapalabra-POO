@@ -37,7 +37,7 @@ public class AlmacenJugadores implements Serializable {
         }
     }
     
-    private boolean contieneJugadorConNombre(String nombre) {
+    public boolean contieneJugadorConNombre(String nombre) {
         boolean encontrado = false;
         Iterator<Jugador> it = this.jugadores.iterator();
         while (!encontrado && it.hasNext()) {
@@ -49,7 +49,7 @@ public class AlmacenJugadores implements Serializable {
     
         
     
-    public Jugador getJugador(String nombre, String clave){
+    public Jugador getJugador(String nombre, char [] clave){
         
         Jugador jugador = null;
         
@@ -67,7 +67,7 @@ public class AlmacenJugadores implements Serializable {
         return jugador;
     }
     
-    public Jugador agregarUsuario(String nombre, String clave) {
+    public Jugador agregarJugador(String nombre, char [] clave) {
         Jugador jugador = null;
         if (!contieneJugadorConNombre(nombre)) {
             jugador = new Jugador(nombre, clave);

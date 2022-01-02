@@ -17,6 +17,10 @@ import Jugador.*;
 public class Clasificacion {
     private final ArrayList<Jugador> jugadores;
     
+    public Clasificacion(){
+        this.jugadores = new ArrayList<>();
+    }
+    
     public Clasificacion(ArrayList<Jugador> usuarios) {
         this.jugadores = new ArrayList<>(usuarios);
         Collections.sort(this.jugadores);

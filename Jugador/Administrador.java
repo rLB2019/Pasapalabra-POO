@@ -17,7 +17,7 @@ public class Administrador extends Jugador {
         setPuntos(1000000);
     }
 
-    public Administrador(String nombre, String clave) {
+    public Administrador(String nombre, char [] clave) {
         super(nombre, clave);
         setPuntos(10000000);
     }

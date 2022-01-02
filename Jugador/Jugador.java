@@ -16,11 +16,11 @@ import java.io.Serializable;
 public class Jugador implements Comparable<Jugador>, Serializable {
 
     private static final String NOMBRE_ADMIN = "admin";
-    private static final String CLAVE_ADMIN = "admin";
+    private static final char [] CLAVE_ADMIN = {'a','d','m','i','n'};
     private static final int PUNTOS_INICIALES = 50;
 
     private final String nombre;
-    private final String clave;
+    private final char [] clave;
     private int puntos;
     private ArrayList<Partida> partidas;
 
@@ -43,7 +43,7 @@ public class Jugador implements Comparable<Jugador>, Serializable {
         this.puntos = 1000000;
     }
 
-    public Jugador(String n, String c) {
+    public Jugador(String n, char [] c) {
         this.nombre = n;
         this.clave = c;
         this.partidas = new ArrayList<>();
@@ -106,8 +106,22 @@ public class Jugador implements Comparable<Jugador>, Serializable {
         this.partidas_jugadas++;
     }
 
-    public boolean esLoginCorrecto(String n, String c) {
-        return this.nombre.equalsIgnoreCase(n) && this.clave.equalsIgnoreCase(c);
+    public boolean esLoginCorrecto(String n, char [] c) {
+        if(!this.nombre.equalsIgnoreCase(n)){
+            return false;
+        }
+        int num = c.length;
+        if(num != this.clave.length){
+            return false;
+        }
+        int i = 0;
+        while(i <= num){
+            if(c[i] != clave[i]){
+                return false;
+            }   
+            i++;
+        }
+        return true;
     }
 
     public void incrementarPartidasGanadas() {
