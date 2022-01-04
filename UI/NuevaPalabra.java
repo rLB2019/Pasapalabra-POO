@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package UI;
 
 import Palabra.*;
 import java.io.File;
 
-/**
- *
- * @author MrKanoa
- */
 public class NuevaPalabra extends javax.swing.JPanel {
 
     private final AlmacenPalabras almacen;

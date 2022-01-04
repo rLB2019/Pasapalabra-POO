@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import Jugador.*;
 import static java.lang.Math.random;
 
-/**
- *
- * @author alvaro
- */
 public class Palabra implements Serializable {
 
     private final char inicial;
