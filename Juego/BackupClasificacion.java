@@ -15,7 +15,7 @@ import java.io.ObjectOutputStream;
 
 /**
  *
- * @author MrKanoa
+ * @author Rodrigo
  */
 public class BackupClasificacion {
     
