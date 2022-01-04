@@ -9,7 +9,6 @@ public class AlmacenPartidas implements Serializable {
     
     public AlmacenPartidas() {
         this.partidas = new ArrayList<>();
-        this.partidas.add(new Partida());
     }
     
     public ArrayList<Partida> getPartidas() {
@@ -21,6 +20,7 @@ public class AlmacenPartidas implements Serializable {
     }
     
     public Partida editarPartida(Partida p){
-        
+        //No se que hay que editar aqui sin ningun parametro :c
+        return p;
     }
 }

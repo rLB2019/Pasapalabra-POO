@@ -1,6 +1,5 @@
 package Jugador;
 
-import java.util.ArrayList;
 import Juego.*;
 import java.io.Serializable;
 
@@ -13,7 +12,7 @@ public class Jugador implements Comparable<Jugador>, Serializable {
     private final String nombre;
     private final char [] clave;
     private int puntos;
-    private ArrayList<Partida> partidas;
+    private final AlmacenPartidas partidas;
 
     private int partidas_jugadas;
     private int partidas_ganadas;
@@ -26,7 +25,7 @@ public class Jugador implements Comparable<Jugador>, Serializable {
         this.nombre = NOMBRE_ADMIN;
         this.clave = CLAVE_ADMIN;
         this.esAdministrador = true;
-        partidas = new ArrayList<>();
+        partidas = new AlmacenPartidas();
         this.partidas_jugadas = 0;
         this.partidas_ganadas = 0;
         this.partidas_empatadas = 0;
@@ -37,7 +36,7 @@ public class Jugador implements Comparable<Jugador>, Serializable {
     public Jugador(String n, char [] c) {
         this.nombre = n;
         this.clave = c;
-        this.partidas = new ArrayList<>();
+        this.partidas = new AlmacenPartidas();
         this.partidas_jugadas = 0;
         this.partidas_ganadas = 0;
         this.partidas_empatadas = 0;
@@ -69,7 +68,7 @@ public class Jugador implements Comparable<Jugador>, Serializable {
         return this.esAdministrador;
     }
 
-    public ArrayList<Partida> getPartidas() {
+    public AlmacenPartidas getPartidas() {
         return this.partidas;
     }
 
@@ -93,7 +92,7 @@ public class Jugador implements Comparable<Jugador>, Serializable {
     }
 
     public void agregarPartida(Partida partida) {
-        this.partidas.add(partida);
+        this.partidas.agregarPartida(partida);
         this.partidas_jugadas++;
     }
 
@@ -127,6 +126,10 @@ public class Jugador implements Comparable<Jugador>, Serializable {
         this.partidas_perdidas++;
     }
 
+    public int getPuntos(){
+        return this.puntos;
+    }
+    
     public void setPuntos(int p) {
         this.puntos = p;
     }

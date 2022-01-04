@@ -15,12 +15,12 @@ public class Rosco {
     private int ronda;
     private int letra;
 
-    public Rosco(Jugador j, AlmacenPalabras almacen) {
+    public Rosco(Jugador j, AlmacenPalabras almacen, int nLetras) {
         this.jugador = j;
 
         //Inicializamos las palabras de forma aleatoria;
-        for (char l : Letras.letras) {
-            ArrayList<Palabra> palabrasConLetra = almacen.getPalabras(l);
+        for (int i = 0; i < nLetras; i++) {
+            ArrayList<Palabra> palabrasConLetra = almacen.getPalabras(i);
             palabras.add(palabrasConLetra.get((int) (random() * palabrasConLetra.size())));
         }
         ronda = 0;
@@ -31,7 +31,7 @@ public class Rosco {
     }
 
     public String jugarPalabra(String guess) {
-        String salida = new String();
+        String salida = "";
         if (guess == null) {
             if (palabras.get(letra).getEstado() != 0) {
                 palabrasAplazadas++;
@@ -80,5 +80,9 @@ public class Rosco {
 
     public String comprarPalabra() {
         return palabras.get(letra).comprarPalabra(jugador);
+    }
+    
+    public Jugador getJugador(){
+        return this.jugador;
     }
 }

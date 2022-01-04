@@ -30,7 +30,7 @@ public class AlmacenPalabras implements Serializable {
     private final ArrayList<Palabra> palabrasY;
     private final ArrayList<Palabra> palabrasZ;
 
-    AlmacenPalabras() {
+    public AlmacenPalabras() {
         palabrasA = new ArrayList<>();
         palabrasB = new ArrayList<>();
         palabrasC = new ArrayList<>();
@@ -110,6 +110,63 @@ public class AlmacenPalabras implements Serializable {
             default -> {
             }
         }
+    }
+    
+    public ArrayList<Palabra> getPalabras(int i) {
+        ArrayList<Palabra> resultado = new ArrayList<>();
+        switch (i) {
+            case 1 ->
+                resultado = (ArrayList<Palabra>) palabrasA.clone();
+            case 2 ->
+                resultado = (ArrayList<Palabra>) palabrasB.clone();
+            case 3 ->
+                resultado = (ArrayList<Palabra>) palabrasC.clone();
+            case 4 ->
+                resultado = (ArrayList<Palabra>) palabrasD.clone();
+            case 5 ->
+                resultado = (ArrayList<Palabra>) palabrasE.clone();
+            case 6 ->
+                resultado = (ArrayList<Palabra>) palabrasF.clone();
+            case 7 ->
+                resultado = (ArrayList<Palabra>) palabrasG.clone();
+            case 8 ->
+                resultado = (ArrayList<Palabra>) palabrasH.clone();
+            case 9 ->
+                resultado = (ArrayList<Palabra>) palabrasI.clone();
+            case 10 ->
+                resultado = (ArrayList<Palabra>) palabrasJ.clone();
+            case 11 ->
+                resultado = (ArrayList<Palabra>) palabrasL.clone();
+            case 12 ->
+                resultado = (ArrayList<Palabra>) palabrasM.clone();
+            case 13 ->
+                resultado = (ArrayList<Palabra>) palabrasN.clone();
+            case 14 ->
+                resultado = (ArrayList<Palabra>) palabrasO.clone();
+            case 15 ->
+                resultado = (ArrayList<Palabra>) palabrasP.clone();
+            case 16 ->
+                resultado = (ArrayList<Palabra>) palabrasQ.clone();
+            case 17 ->
+                resultado = (ArrayList<Palabra>) palabrasR.clone();
+            case 18 ->
+                resultado = (ArrayList<Palabra>) palabrasS.clone();
+            case 19 ->
+                resultado = (ArrayList<Palabra>) palabrasT.clone();
+            case 20 ->
+                resultado = (ArrayList<Palabra>) palabrasU.clone();
+            case 21 ->
+                resultado = (ArrayList<Palabra>) palabrasV.clone();
+            case 22 ->
+                resultado = (ArrayList<Palabra>) palabrasX.clone();
+            case 23 ->
+                resultado = (ArrayList<Palabra>) palabrasY.clone();
+            case 24 ->
+                resultado = (ArrayList<Palabra>) palabrasZ.clone();
+            default -> {
+            }
+        }
+        return resultado;
     }
 
     public ArrayList<Palabra> getPalabras(char letra) {
