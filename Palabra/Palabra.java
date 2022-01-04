@@ -20,7 +20,8 @@ public class Palabra implements Serializable {
         this.acertada = acertada;
         this.fallada = f;
         this.aplazada = aplazada;
-        definiciones.add(definicion);
+        this.definiciones = new ArrayList<>();
+        this.definiciones.add(definicion);
     }
 
     public String getPalabra() {
@@ -112,5 +113,15 @@ public class Palabra implements Serializable {
             setEstado(-1);
             return false;
         }
+    }
+    
+    @Override
+    public String toString(){
+        String resultado = palabra;
+        int size = definiciones.size();
+        for(int i = 0; i < size; i++){
+            resultado = resultado.concat(definiciones.get(i).getDefinicion());
+        }
+        return resultado;
     }
 }
