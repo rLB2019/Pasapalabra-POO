@@ -14,10 +14,8 @@ public class Administrador extends Jugador {
         setPuntos(10000000);
     }
 
-    public void informacionPartida(Partida p) {
-        //Sacamos la info de partida
-        //Como aun no tenemos partida no podemos hacer esto
-        //Hay que sacar jugadores, marcador y detalle de los roscos(letras palabras y pistas usadas)
+    public String informacionPartida(Partida p) {
+        return p.toString();
     }
 
     public void verClasificacion() {

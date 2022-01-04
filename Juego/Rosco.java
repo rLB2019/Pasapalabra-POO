@@ -60,17 +60,19 @@ public class Rosco {
         return salida;
     }
 
-    public String siguientePalabra() {
-        Palabra p = palabras.get(letra);
-        return p.getLetra() + "";
+    public Palabra siguientePalabra() {
+        return palabras.get(letra);
     }
 
     private String acabarPartida() {
-        String salida = "Has acabado la partida!!!\n";
+        String salida = "Has acabado el juego!!!\n";
         salida = salida.concat("Has acertado " + palabrasAcertadas + "\n");
         salida = salida.concat("Has fallado " + palabrasFalladas + "\n");
         salida = salida.concat("Has dejado " + palabrasAplazadas + " sin resolver\n");
-
+        
+        if(isGanada()){
+            salida = salida.concat("Has Ganado!!!");
+        }
         return salida;
     }
 
@@ -84,5 +86,17 @@ public class Rosco {
     
     public Jugador getJugador(){
         return this.jugador;
+    }
+    
+    public int getPalabrasAcertadas(){
+        return palabrasAcertadas;
+    }
+    
+    public int getPalabrasFalladas(){
+        return palabrasFalladas;
+    }
+    
+    public boolean isGanada(){
+        return palabrasAcertadas == 24;
     }
 }

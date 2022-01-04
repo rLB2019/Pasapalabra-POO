@@ -172,7 +172,9 @@ public class AlmacenPalabras implements Serializable {
         }
         return resultado;
     }
-
+    
+    //No se usa se puede borrar
+    /*
     public ArrayList<Palabra> getPalabras(char letra) {
         ArrayList<Palabra> resultado = new ArrayList<>();
         switch (letra) {
@@ -228,7 +230,7 @@ public class AlmacenPalabras implements Serializable {
             }
         }
         return resultado;
-    }
+    }*/
 
     public void BorrarPalabra(Palabra p) {
         if (p != null) {
